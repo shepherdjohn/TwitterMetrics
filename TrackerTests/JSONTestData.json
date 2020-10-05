@@ -1,0 +1,78 @@
+﻿[
+  {
+    "data": {
+      "text": "RT @minimonn94: This is so accurate 😂😂😂😂😂 https://t.co/tlaaQV8J9D",
+      "created_at": "2020-10-05T11:15:48.000Z",
+      "entities": {
+        "urls": [
+          {
+            "start": 42,
+            "end": 65,
+            "url": "https://t.co/tlaaQV8J9D",
+            "expanded_url": "https://twitter.com/minimonn94/status/1312612355851784193/photo/1",
+            "display_url": "pic.twitter.com/tlaaQV8J9D"
+          },
+          {
+            "start": 42,
+            "end": 65,
+            "url": "https://t.co/tlaaQV8J9D",
+            "expanded_url": "https://twitter.com/minimonn94/status/1312612355851784193/photo/1",
+            "display_url": "pic.twitter.com/tlaaQV8J9D"
+          },
+          {
+            "start": 42,
+            "end": 65,
+            "url": "https://t.co/tlaaQV8J9D",
+            "expanded_url": "https://twitter.com/minimonn94/status/1312612355851784193/photo/1",
+            "display_url": "pic.twitter.com/tlaaQV8J9D"
+          },
+          {
+            "start": 42,
+            "end": 65,
+            "url": "https://t.co/tlaaQV8J9D",
+            "expanded_url": "https://twitter.com/minimonn94/status/1312612355851784193/photo/1",
+            "display_url": "pic.twitter.com/tlaaQV8J9D"
+          }
+        ],
+        "mentions": [
+          {
+            "start": 3,
+            "end": 14,
+            "username": "minimonn94"
+          }
+        ]
+      },
+      "id": "1313075412096876545"
+    }
+  },
+  {
+    "data": {
+      "text": "All !! 😍😍😍😍😍😍\n#MewSuppasit \n #PlaymorexMewGulf https://t.co/KoSqXpih2c",
+      "created_at": "2020-10-05T11:15:48.000Z",
+      "entities": {
+        "hashtags": [
+          {
+            "start": 14,
+            "end": 26,
+            "tag": "MewSuppasit"
+          },
+          {
+            "start": 29,
+            "end": 46,
+            "tag": "PlaymorexMewGulf"
+          }
+        ],
+        "urls": [
+          {
+            "start": 47,
+            "end": 70,
+            "url": "https://t.co/KoSqXpih2c",
+            "expanded_url": "https://twitter.com/CKSDforMew/status/1313067913662799873",
+            "display_url": "twitter.com/CKSDforMew/sta…"
+          }
+        ]
+      },
+      "id": "1313075412092633091"
+    }
+  }
+]

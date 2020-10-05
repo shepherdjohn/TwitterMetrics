@@ -1,0 +1,40 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterService", "TwitterService\TwitterService.csproj", "{A5FB6DA1-FEB7-45C1-AE9C-ACC82BA483C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerTests", "TrackerTests\TrackerTests.csproj", "{BD86230A-E04A-47F3-882A-3E9F6F7853DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterLib", "TwitterLib\TwitterLib.csproj", "{FD5F36FE-DB18-4D54-8DFA-7051920D6E22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterConsoleApp", "TwitterConsoleApp\TwitterConsoleApp.csproj", "{8436BC96-D95B-47AA-A7DF-10A4557FF425}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02C2C965-AA9A-4078-B0BF-569DAC12B2A2}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5FB6DA1-FEB7-45C1-AE9C-ACC82BA483C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5FB6DA1-FEB7-45C1-AE9C-ACC82BA483C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5FB6DA1-FEB7-45C1-AE9C-ACC82BA483C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5FB6DA1-FEB7-45C1-AE9C-ACC82BA483C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD86230A-E04A-47F3-882A-3E9F6F7853DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD86230A-E04A-47F3-882A-3E9F6F7853DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD86230A-E04A-47F3-882A-3E9F6F7853DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD86230A-E04A-47F3-882A-3E9F6F7853DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD5F36FE-DB18-4D54-8DFA-7051920D6E22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD5F36FE-DB18-4D54-8DFA-7051920D6E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD5F36FE-DB18-4D54-8DFA-7051920D6E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD5F36FE-DB18-4D54-8DFA-7051920D6E22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8436BC96-D95B-47AA-A7DF-10A4557FF425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8436BC96-D95B-47AA-A7DF-10A4557FF425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8436BC96-D95B-47AA-A7DF-10A4557FF425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8436BC96-D95B-47AA-A7DF-10A4557FF425}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
