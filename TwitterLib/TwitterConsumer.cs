@@ -14,8 +14,7 @@ namespace TwitterLib
         public event EventHandler StreamDataReceivedEvent;
         private readonly ChannelReader<Envelope> _reader;
         private readonly int _instanceId;
-        //private ILogger<TwitterConsumer> _logger;
-
+       
         public TwitterConsumer(ChannelReader<Envelope> channel, int instanceId)
         {
             _reader = channel;
