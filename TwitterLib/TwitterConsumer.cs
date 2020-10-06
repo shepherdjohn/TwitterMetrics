@@ -26,19 +26,16 @@ namespace TwitterLib
         {
             try
             {
-                var consumer = Task.Run(async () =>
+                while (await _reader.WaitToReadAsync())
                 {
-                    while (await _reader.WaitToReadAsync())
+                    var envelope = await _reader.ReadAsync();
+                    TwitterStreamModel model = JsonConvert.DeserializeObject<TwitterStreamModel>(envelope.Payload);
+                    
+                    if (StreamDataReceivedEvent!= null && model!=null)
                     {
-                        var envelope = await _reader.ReadAsync();
-                        TwitterStreamModel model = JsonConvert.DeserializeObject<TwitterStreamModel>(envelope.Payload);
-                       
-                        if (StreamDataReceivedEvent!= null && model!=null)
-                        {
-                            StreamDataReceivedEvent(this, new TweetReceivedEventArgs() { TwitterStreamModel = model });
-                        }
+                        StreamDataReceivedEvent(this, new TweetReceivedEventArgs() { TwitterStreamModel = model });
                     }
-                });
+                }
             }
             catch (Exception ex)
             {
