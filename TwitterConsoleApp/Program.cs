@@ -28,7 +28,7 @@ namespace TwitterConsoleApp
             var consumerTask = consumer.BeginConsumerAsync();
             Console.WriteLine("Consumer Started");
 
-            Console.WriteLine("Waiting Tasks");
+            Console.WriteLine("Waiting for Tasks to Complete");
             Task.WaitAll(producerTask, consumerTask);
             Console.WriteLine("Wait all Complete");
 
