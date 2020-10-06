@@ -52,6 +52,7 @@ namespace TwitterLib
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 _writeToFileComplete = false;
             }
             
