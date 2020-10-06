@@ -1,4 +1,6 @@
-﻿Main classes used for listening to the Twitter feed are:
+This is a .net Core 3.1 application
+
+Main classes used for listening to the Twitter feed are:
 1. Twitter Producer
 2. Twitter Consumer
 
