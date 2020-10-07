@@ -11,5 +11,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TwitterLib\TwitterLib.csproj" />
+    <ProjectReference Include="..\TwitterService.Shared\TwitterService.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Tracker\" />
   </ItemGroup>
 </Project>

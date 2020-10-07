@@ -9,6 +9,7 @@ using static TwitterLib.Util;
 
 namespace TwitterLib
 {
+    
     public class TwitterConsumer
     {
         public event EventHandler StreamDataReceivedEvent;

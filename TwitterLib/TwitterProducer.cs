@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.Threading.Channels;
 using System.Threading;
 using TwitterLib.Model;
+using Microsoft.Extensions.Logging;
 
 namespace TwitterLib
 {
@@ -32,6 +33,7 @@ namespace TwitterLib
             {
 
                 var httpClient = new HttpClient();
+                httpClient.Timeout = new TimeSpan(0, 0, 10);
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                 var requestUri = new HttpRequestMessage(HttpMethod.Get, uri);
                 
@@ -43,6 +45,11 @@ namespace TwitterLib
                     await _writer.WriteAsync(new Envelope(json.Result));
                 }
             }
+            catch (OperationCanceledException ocException)
+            {
+                Console.WriteLine($"Operation was cancelled... {ocException.ToString()}");
+            }
+
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());

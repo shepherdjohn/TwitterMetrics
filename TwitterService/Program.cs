@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TwitterService.Entities;
+using TwitterService.Services;
 
 namespace TwitterService
 {
@@ -18,7 +20,11 @@ namespace TwitterService
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddHostedService<Worker>();
+
+                    services.AddSingleton<IMessageChannel, MessageChannel>();
+                    services.AddHostedService<ChannelProducerService>();
+                    services.AddHostedService<ChannelConsumerService>();
+                    
                 });
     }
 }

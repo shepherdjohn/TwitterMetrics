@@ -9,6 +9,9 @@ using System.Timers;
 using TwitterLib.Tracker;
 using static TwitterLib.Util;
 using System.Text;
+using TwitterService.Shared;
+using TwitterService;
+using TwitterLib.Model;
 
 namespace TwitterLib
 {
@@ -63,11 +66,35 @@ namespace TwitterLib
         {
             try
             {
-                // Receive new data and feed the data.text to each tracker using Parallel tasks for speed
-                TweetReceivedEventArgs tweet = e as TweetReceivedEventArgs;
-                ParallelLoopResult result = Parallel.ForEach(_trackerList.ToArray(), (current) => {
-                    current.OnNewMessage(tweet.TwitterStreamModel);
-                });
+                int nullCount = 0;
+
+
+                if (e is MessageReceivedEventArgs)
+                {
+                    MessageReceivedEventArgs message = e as MessageReceivedEventArgs;
+
+                    TwitterStreamModel model = JsonConvert.DeserializeObject<TwitterStreamModel>(message.Message.Body);
+                    if (model == null)
+                    {
+                        nullCount++;
+                    }
+                    else
+                    {
+                        ParallelLoopResult result = Parallel.ForEach(_trackerList.ToArray(), (current) =>
+                        {
+                            current.OnNewMessage(model);
+                        });
+                    }
+                }
+                else
+                {
+                    // Receive new data and feed the data.text to each tracker using Parallel tasks for speed
+                    TweetReceivedEventArgs tweet = e as TweetReceivedEventArgs;
+                    ParallelLoopResult result = Parallel.ForEach(_trackerList.ToArray(), (current) =>
+                    {
+                        current.OnNewMessage(tweet.TwitterStreamModel);
+                    });
+                }
             }
             catch (Exception ex)
             {

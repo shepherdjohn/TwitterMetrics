@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterService.Shared", "TwitterService.Shared\TwitterService.Shared.csproj", "{ABA2DB2B-983A-4B5D-AC6B-A60FCB376307}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{8436BC96-D95B-47AA-A7DF-10A4557FF425}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8436BC96-D95B-47AA-A7DF-10A4557FF425}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8436BC96-D95B-47AA-A7DF-10A4557FF425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA2DB2B-983A-4B5D-AC6B-A60FCB376307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA2DB2B-983A-4B5D-AC6B-A60FCB376307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA2DB2B-983A-4B5D-AC6B-A60FCB376307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA2DB2B-983A-4B5D-AC6B-A60FCB376307}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
