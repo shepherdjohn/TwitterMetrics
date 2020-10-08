@@ -16,7 +16,5 @@
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Entities\" />
-    <Folder Include="Tracker\" />
   </ItemGroup>
 </Project>

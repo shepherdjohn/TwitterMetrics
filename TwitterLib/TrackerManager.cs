@@ -56,8 +56,8 @@ namespace TwitterLib
         public TrackerManager(int reportingInterval)
         {
 
-            StartTimer(reportingInterval);
             ConfigureTrackers();
+            StartTimer(reportingInterval);
 
         }
 
