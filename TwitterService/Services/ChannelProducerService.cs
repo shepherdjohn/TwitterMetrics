@@ -67,9 +67,13 @@ namespace TwitterService.Services
 
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                _logger.LogCritical($"An unhandled exception has occured {ex.ToString()}");
+                _messageChannel.CompleteWriter(ex);
             }
-
+            finally
+            {
+                _messageChannel.TryCompleteWriter();
+            }
             
         }
     }

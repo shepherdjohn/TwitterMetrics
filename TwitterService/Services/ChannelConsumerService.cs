@@ -69,7 +69,8 @@ namespace TwitterService.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Received Error {ex.ToString()}" );
+                _logger.LogCritical($"An unhandled exception has occured {ex.ToString()}");
+                
             }
 
 
