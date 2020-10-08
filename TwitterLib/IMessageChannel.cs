@@ -7,6 +7,7 @@ using TwitterService.Shared;
 
 namespace TwitterService.Entities
 {
+    /**
     public interface IMessageChannel
     {
 
@@ -15,4 +16,5 @@ namespace TwitterService.Entities
         void CompleteWriter(Exception ex = null);
         bool TryCompleteWriter(Exception ex = null);
     }
+    **/
 }

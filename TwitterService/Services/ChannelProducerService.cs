@@ -37,8 +37,8 @@ namespace TwitterService.Services
         protected async override Task ExecuteAsync(CancellationToken stoppingToken)
         {
 
-             string accessToken = "AAAAAAAAAAAAAAAAAAAAACQOIAEAAAAAYLOKBJDsmVK922s058%2BIU4%2F4W2I%3DRLUKvlSBXDmgIdCbfSmdXa65JFGfPU6mdpZeX8ScrPfCVLEtQF";
-             string uri = "https://api.twitter.com/2/tweets/sample/stream?tweet.fields=created_at,entities";
+            string accessToken = "AAAAAAAAAAAAAAAAAAAAACQOIAEAAAAAYLOKBJDsmVK922s058%2BIU4%2F4W2I%3DRLUKvlSBXDmgIdCbfSmdXa65JFGfPU6mdpZeX8ScrPfCVLEtQF";
+            string uri = "https://api.twitter.com/2/tweets/sample/stream?tweet.fields=created_at,entities";
       
             try
             {
@@ -54,12 +54,15 @@ namespace TwitterService.Services
                 {
                     var json = streamReader.ReadLineAsync();
                     await _messageChannel.WriteMessageAsyn(new Message() { Body = json.Result }, stoppingToken);
-                   
                 }
             }
-            catch (OperationCanceledException ocException)
+            catch(TimeoutException)
             {
-                Console.WriteLine($"Operation was cancelled... {ocException.ToString()}");
+                _logger.LogWarning("Received Timeout from HTTP Client");
+            }
+            catch (OperationCanceledException)
+            {
+                _logger.LogInformation("Cancellation Token Exception Received");
             }
 
             catch (Exception ex)

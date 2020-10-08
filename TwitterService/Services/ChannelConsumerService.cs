@@ -41,6 +41,7 @@ namespace TwitterService.Services
 
             try
             {
+
                 while(!stoppingToken.IsCancellationRequested)
                 {
                     var receivedMsg = await _channelReader.ReadAsync(stoppingToken);
@@ -61,6 +62,10 @@ namespace TwitterService.Services
                     }
                    
                 }
+            }
+           catch(OperationCanceledException)
+            {
+                _logger.LogInformation("Cancellation Token Exception Received");
             }
             catch (Exception ex)
             {
