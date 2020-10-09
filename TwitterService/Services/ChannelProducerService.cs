@@ -52,8 +52,12 @@ namespace TwitterService.Services
 
                 while (!streamReader.EndOfStream)
                 {
-                    var json = streamReader.ReadLineAsync();
-                    await _messageChannel.WriteMessageAsyn(new Message() { Body = json.Result }, stoppingToken);
+                    var data = streamReader.ReadLineAsync();
+                    if(data !=null)
+                    {
+                        await _messageChannel.WriteMessageAsyn(new Message() { Body = data.Result }, stoppingToken);
+                    }
+                   
                 }
             }
             catch(TimeoutException)

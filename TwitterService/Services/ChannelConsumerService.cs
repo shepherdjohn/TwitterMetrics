@@ -43,21 +43,21 @@ namespace TwitterService.Services
             
             try
             {
-
                 while(!stoppingToken.IsCancellationRequested)
                 {
                     var receivedMsg = await _channelReader.ReadAsync(stoppingToken);
-
-                    MessageReceivedEventArgs args = new MessageReceivedEventArgs()
-                    {
-                        Message = receivedMsg
-                    };
-
-                    OnConsumerMessageReceived?.Invoke(this, args);
-                   
+                    if (!string.IsNullOrEmpty(receivedMsg.Body))
+                    { 
+                        MessageReceivedEventArgs args = new MessageReceivedEventArgs()
+                        {
+                            Message = receivedMsg
+                        };
+                       
+                        OnConsumerMessageReceived?.Invoke(this, args);
+                    }
                 }
             }
-           catch(OperationCanceledException)
+            catch(OperationCanceledException)
             {
                 _logger.LogInformation("Cancellation Token Exception Received");
             }
@@ -66,7 +66,6 @@ namespace TwitterService.Services
                 _logger.LogCritical($"An unhandled exception has occured {ex.ToString()}");
                 
             }
-
 
         }
     }

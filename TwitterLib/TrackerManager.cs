@@ -79,31 +79,25 @@ namespace TwitterLib
             try
             {
                
-                if (e is MessageReceivedEventArgs)
+                MessageReceivedEventArgs message = e as MessageReceivedEventArgs;
+                TwitterStreamModel model = JsonConvert.DeserializeObject<TwitterStreamModel>(message.Message.Body);
+                ParallelLoopResult result = Parallel.ForEach(_trackerList.ToArray(), (current) =>
                 {
-                    MessageReceivedEventArgs message = e as MessageReceivedEventArgs;
+                    //_logger.LogInformation($"Sending: {model.data.text}");
+                    current.OnNewMessage(model);
+                });
+                
+                   
+              
+            }
+            catch(NullReferenceException ex)
+            {
 
-                    TwitterStreamModel model = JsonConvert.DeserializeObject<TwitterStreamModel>(message.Message.Body);
-                   
-                    ParallelLoopResult result = Parallel.ForEach(_trackerList.ToArray(), (current) =>
-                    {
-                        current.OnNewMessage(model);
-                    });
-                   
-                }
-                else
-                {
-                    // Receive new data and feed the data.text to each tracker using Parallel tasks for speed
-                    TweetReceivedEventArgs tweet = e as TweetReceivedEventArgs;
-                    ParallelLoopResult result = Parallel.ForEach(_trackerList.ToArray(), (current) =>
-                    {
-                        current.OnNewMessage(tweet.TwitterStreamModel);
-                    });
-                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                _logger.LogError($"Unhandled error was encountered, {ex.ToString()}");
+                  
             }
         }
 
