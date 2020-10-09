@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 using TwitterLib.Model;
-using static TwitterLib.Util;
+
 
 namespace TwitterLib.Tracker
 {

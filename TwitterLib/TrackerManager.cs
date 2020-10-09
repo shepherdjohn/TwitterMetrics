@@ -7,7 +7,6 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Timers;
 using TwitterLib.Tracker;
-using static TwitterLib.Util;
 using System.Text;
 using TwitterService.Shared;
 using TwitterService;
@@ -91,7 +90,7 @@ namespace TwitterLib
             }
             catch(NullReferenceException ex)
             {
-
+                _logger.LogError($"Caught Null Reference {ex.ToString()}");
             }
             catch (Exception ex)
             {

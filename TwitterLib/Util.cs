@@ -3,6 +3,7 @@ using TwitterLib.Model;
 
 namespace TwitterLib
 {
+    /**
     public class Util
     {
      
@@ -12,4 +13,5 @@ namespace TwitterLib
         }
 
     }
+    **/
 }

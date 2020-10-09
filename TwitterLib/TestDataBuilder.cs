@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using TwitterLib.Model;
-using static TwitterLib.Util;
+using TwitterService.Shared;
+
 
 namespace TwitterLib
 {
@@ -33,8 +34,10 @@ namespace TwitterLib
 
         public void OnNewStreamMessage(object sender, EventArgs e)
         {
-            TweetReceivedEventArgs msg = (TweetReceivedEventArgs)e;
-            _tweets.Add(msg.TwitterStreamModel);
+            MessageReceivedEventArgs message = e as MessageReceivedEventArgs;
+            TwitterStreamModel model = JsonConvert.DeserializeObject<TwitterStreamModel>(message.Message.Body);
+           
+            _tweets.Add(model);
 
             if(_tweets.Count >= MsgToWrite && !_writeToFileComplete)
             {
