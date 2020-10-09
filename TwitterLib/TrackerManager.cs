@@ -83,7 +83,6 @@ namespace TwitterLib
                 TwitterStreamModel model = JsonConvert.DeserializeObject<TwitterStreamModel>(message.Message.Body);
                 ParallelLoopResult result = Parallel.ForEach(_trackerList.ToArray(), (current) =>
                 {
-                    //_logger.LogInformation($"Sending: {model.data.text}");
                     current.OnNewMessage(model);
                 });
                 
