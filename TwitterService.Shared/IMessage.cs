@@ -6,9 +6,4 @@ namespace TwitterService.Shared
         string Body { get; set; }
     }
 
-    public class Message : IMessage
-    {
-        public string Body { get; set; }
-    }
-
 }

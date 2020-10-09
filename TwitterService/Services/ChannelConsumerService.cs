@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TwitterService.Entities;
 using TwitterService.Shared;
+using TwitterLib;
 
 namespace TwitterService.Services
 {
@@ -14,15 +15,17 @@ namespace TwitterService.Services
         public event EventHandler OnConsumerMessageReceived;
 
         private readonly ILogger<ChannelConsumerService> _logger;
+        private readonly ITrackerManager _trackerManager;
         private ChannelReader<Message> _channelReader;
 
-        public ChannelConsumerService(ILogger<ChannelConsumerService> logger, IMessageChannel channel)
+
+        public ChannelConsumerService(ILogger<ChannelConsumerService> logger,ITrackerManager trackerManager, IMessageChannel channel)
         {
             _logger = logger;
+            _trackerManager = trackerManager;
             _channelReader = channel.Reader;
-
-            TwitterLib.TrackerManager tracker = new TwitterLib.TrackerManager(10000);
-            OnConsumerMessageReceived += tracker.OnNewStreamMessage;
+           
+            OnConsumerMessageReceived += _trackerManager.OnNewStreamMessage;
         }
 
         public override Task StartAsync(CancellationToken cancellationToken)
@@ -37,8 +40,7 @@ namespace TwitterService.Services
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            int nullCounter = 0;
-
+            
             try
             {
 
@@ -46,20 +48,12 @@ namespace TwitterService.Services
                 {
                     var receivedMsg = await _channelReader.ReadAsync(stoppingToken);
 
-                    if (receivedMsg == null)
+                    MessageReceivedEventArgs args = new MessageReceivedEventArgs()
                     {
-                        nullCounter++;
-                    }
-                    else
-                    {
+                        Message = receivedMsg
+                    };
 
-                        MessageReceivedEventArgs args = new MessageReceivedEventArgs()
-                        {
-                            Message = receivedMsg
-                        };
-
-                        OnConsumerMessageReceived?.Invoke(this, args);
-                    }
+                    OnConsumerMessageReceived?.Invoke(this, args);
                    
                 }
             }

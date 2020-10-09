@@ -12,36 +12,34 @@ using System.Text;
 using TwitterService.Shared;
 using TwitterService;
 using TwitterLib.Model;
+using Microsoft.Extensions.Logging;
 
 namespace TwitterLib
 {
-
-    /**
+    /** Tracker Requirements
+    CountTracker:
     Total number of tweets received -- done
 
+    HastagTracker:
     Top hashtags - done
 
+    URLTracker
     Percent of tweets that contain a url - done
     Percent of tweets that contain a photo url (pic.twitter.com or Instagram) - done
     Top domains of urls in tweets - done
 
+    RateTracker:
     Average tweets per hour/minute/second - done
 
-
+    EmojiTracker:
     Top emojis in tweets - done
     Percent of tweets that contains emojis - done
-
     **/
 
 
-
-
-    public interface ITrackerManager
-    {
-        void OnNewStreamMessage(object sender, EventArgs e);
-        object GetTrackerResults();
-
-    }
+    /** TODO:
+     * Impliment configuration class and inject configuration for Elapsed Time
+    **/
 
     /// <summary>
     /// Manages and feeds data to the attached trackers
@@ -51,40 +49,47 @@ namespace TwitterLib
     {
 
         private List<ITracker> _trackerList = new List<ITracker>();
-        
+        private readonly ILogger _logger;
 
-        public TrackerManager(int reportingInterval)
+        public TrackerManager(ILogger<TrackerManager> logger)
         {
-
-            ConfigureTrackers();
-            StartTimer(reportingInterval);
-
+            _logger = logger;
+            Initialize();
         }
 
+        public bool Initialize()
+        {
+            try
+            {
+                ConfigureTrackers();
+                StartTimer(10000);
+                _logger.LogInformation("Completed Initialization");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"An unhandled exception has occured, {ex.ToString()}");
+                return false;
+            }
+            
+        }
       
         public void OnNewStreamMessage(object sender, EventArgs e)
         {
             try
             {
-                int nullCount = 0;
-
-
+               
                 if (e is MessageReceivedEventArgs)
                 {
                     MessageReceivedEventArgs message = e as MessageReceivedEventArgs;
 
                     TwitterStreamModel model = JsonConvert.DeserializeObject<TwitterStreamModel>(message.Message.Body);
-                    if (model == null)
+                   
+                    ParallelLoopResult result = Parallel.ForEach(_trackerList.ToArray(), (current) =>
                     {
-                        nullCount++;
-                    }
-                    else
-                    {
-                        ParallelLoopResult result = Parallel.ForEach(_trackerList.ToArray(), (current) =>
-                        {
-                            current.OnNewMessage(model);
-                        });
-                    }
+                        current.OnNewMessage(model);
+                    });
+                   
                 }
                 else
                 {
@@ -100,7 +105,6 @@ namespace TwitterLib
             {
                 Console.WriteLine(ex.ToString());
             }
-           
         }
 
        
@@ -167,7 +171,6 @@ namespace TwitterLib
 
         private void OnTimerTick(Object source, ElapsedEventArgs e)
         {
-            
             Console.WriteLine(GetTrackerResults());
         }
 

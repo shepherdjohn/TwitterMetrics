@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterService.Shared", "TwitterService.Shared\TwitterService.Shared.csproj", "{ABA2DB2B-983A-4B5D-AC6B-A60FCB376307}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterService.Shared", "TwitterService.Shared\TwitterService.Shared.csproj", "{0097D5A5-E682-43A8-99B6-7F68285E8E5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,9 +32,9 @@ Global
 		{FD5F36FE-DB18-4D54-8DFA-7051920D6E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD5F36FE-DB18-4D54-8DFA-7051920D6E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD5F36FE-DB18-4D54-8DFA-7051920D6E22}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABA2DB2B-983A-4B5D-AC6B-A60FCB376307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABA2DB2B-983A-4B5D-AC6B-A60FCB376307}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABA2DB2B-983A-4B5D-AC6B-A60FCB376307}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABA2DB2B-983A-4B5D-AC6B-A60FCB376307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0097D5A5-E682-43A8-99B6-7F68285E8E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0097D5A5-E682-43A8-99B6-7F68285E8E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0097D5A5-E682-43A8-99B6-7F68285E8E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0097D5A5-E682-43A8-99B6-7F68285E8E5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

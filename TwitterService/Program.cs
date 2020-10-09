@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TwitterService.Entities;
 using TwitterService.Services;
+using TwitterLib;
 
 namespace TwitterService
 {
@@ -20,7 +21,7 @@ namespace TwitterService
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-
+                    services.AddSingleton<ITrackerManager, TrackerManager>();
                     services.AddSingleton<IMessageChannel, MessageChannel>();
                     services.AddHostedService<ChannelProducerService>();
                     services.AddHostedService<ChannelConsumerService>();

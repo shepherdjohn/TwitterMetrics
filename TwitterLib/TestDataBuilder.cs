@@ -7,7 +7,7 @@ using static TwitterLib.Util;
 
 namespace TwitterLib
 {
-    public class TestDataBuilder : ITrackerManager
+    public class TestDataBuilder
     {
 
         List<TwitterStreamModel> _tweets = new List<TwitterStreamModel>();
@@ -15,13 +15,6 @@ namespace TwitterLib
         public TestDataBuilder()
         {
 
-
-
-        }
-
-        public object GetTrackerResults()
-        {
-            return null;
         }
 
         public void OnNewStreamMessage(object sender, EventArgs e)
@@ -57,6 +50,7 @@ namespace TwitterLib
             }
             
         }
+
 
         /// <summary>
         /// Determine the number of messages to write to file
