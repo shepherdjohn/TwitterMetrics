@@ -8,12 +8,8 @@ namespace TwitterLib
      
         public class TweetReceivedEventArgs : EventArgs
         {
-            
             public TwitterStreamModel TwitterStreamModel { get; set; }
-            
         }
-
-     
 
     }
 }

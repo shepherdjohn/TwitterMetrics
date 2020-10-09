@@ -7,7 +7,11 @@ using static TwitterLib.Util;
 
 namespace TwitterLib
 {
-    public class TestDataBuilder
+    /// <summary>
+    /// Class to listen to the twitter consumer as an ITrackerManager for the purpose of generating live test data that
+    /// would be saved to a file for use in further testing.
+    /// </summary>
+    public class TestDataBuilder : ITrackerManager
     {
 
         List<TwitterStreamModel> _tweets = new List<TwitterStreamModel>();
@@ -15,6 +19,16 @@ namespace TwitterLib
         public TestDataBuilder()
         {
 
+        }
+
+        public object GetTrackerResults()
+        {
+            return null;
+        }
+
+        public bool Initialize()
+        {
+            return true;
         }
 
         public void OnNewStreamMessage(object sender, EventArgs e)
@@ -39,6 +53,7 @@ namespace TwitterLib
                 using (StreamWriter file = File.CreateText(@"LargeJsonTestData.json"))
                 {
                     JsonSerializer serializer = new JsonSerializer();
+
                     //serialize object directly into file stream
                     serializer.Serialize(file, _tweets);
                 }
@@ -50,6 +65,8 @@ namespace TwitterLib
             }
             
         }
+
+      
 
 
         /// <summary>
