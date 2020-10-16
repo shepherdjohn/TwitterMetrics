@@ -12,6 +12,8 @@ using TwitterService.Shared;
 using TwitterService;
 using TwitterLib.Model;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace TwitterLib
 {
@@ -49,10 +51,12 @@ namespace TwitterLib
 
         private List<ITracker> _trackerList = new List<ITracker>();
         private readonly ILogger _logger;
+        FeaturesConfiguration _configuration;
 
-        public TrackerManager(ILogger<TrackerManager> logger)
+        public TrackerManager(ILogger<TrackerManager> logger, IOptions<FeaturesConfiguration> options)
         {
             _logger = logger;
+            _configuration = options.Value;
             Initialize();
         }
 
@@ -61,7 +65,7 @@ namespace TwitterLib
             try
             {
                 ConfigureTrackers();
-                StartTimer(10000);
+                StartTimer(_configuration.TrackManagerElapsedTime);
                 _logger.LogInformation("Completed Initialization");
                 return true;
             }
@@ -85,8 +89,6 @@ namespace TwitterLib
                     current.OnNewMessage(model);
                 });
                 
-                   
-              
             }
             catch(NullReferenceException ex)
             {

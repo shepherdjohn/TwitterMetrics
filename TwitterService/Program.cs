@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using TwitterService.Entities;
 using TwitterService.Services;
 using TwitterLib;
+using Microsoft.Extensions.Configuration;
+using TwitterService.Shared;
 
 namespace TwitterService
 {
@@ -21,6 +23,8 @@ namespace TwitterService
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
+
+                    services.Configure<FeaturesConfiguration>(hostContext.Configuration.GetSection("Features"));
                     services.AddSingleton<ITrackerManager, TrackerManager>();
                     services.AddSingleton<IMessageChannel, MessageChannel>();
                     services.AddHostedService<ChannelProducerService>();
@@ -28,4 +32,6 @@ namespace TwitterService
                     
                 });
     }
+
+   
 }
